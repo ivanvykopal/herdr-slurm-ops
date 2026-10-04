@@ -1,0 +1,23 @@
+[package]
+name = "herdr-slurm-ops"
+version = "0.1.0"
+edition = "2021"
+description = "Interactive Slurm/PBS job control and agent notification for herdr"
+license = "MIT"
+
+[[bin]]
+name = "herdr-slurm-ops"
+path = "src/main.rs"
+
+[dependencies]
+chrono = { version = "0.4", default-features = false, features = ["clock"] }
+crossterm = "0.28"
+serde_json = "1"
+toml = "0.8"
+
+[target.'cfg(unix)'.dependencies]
+libc = "0.2"
+
+[profile.release]
+strip = true
+lto = true
